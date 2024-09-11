@@ -1,4 +1,4 @@
 package com.ismoke.domain.model;
 
-public class Produto {
+public class Product {
 }

@@ -29,6 +29,10 @@ public class User {
         return cpf;
     }
 
+    public static UserBuilder builder() {
+        return new UserBuilder();
+    }
+
     public static class UserBuilder {
         private String name;
         private String email;

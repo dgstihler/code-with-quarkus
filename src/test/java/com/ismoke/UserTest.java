@@ -15,7 +15,7 @@ public class UserTest {
     @Test
     public void testUserGetters() {
 
-        User user = new User.UserBuilder()
+        User user = User.builder()
             .name(name)
             .email(email)
             .cpf(cpf)
