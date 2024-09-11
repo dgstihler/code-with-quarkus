@@ -1,5 +1,6 @@
 package org.acme;
 
+import com.ismoke.GreetingResourceTest;
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
 @QuarkusIntegrationTest
