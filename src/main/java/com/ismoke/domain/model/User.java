@@ -1,14 +1,10 @@
 package com.ismoke.domain.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Entity;
-
-@Entity
-public class User  extends PanacheEntity {
-    private String name;
-    private String email;
-    private String phone;
-    private String cpf;
+public class User {
+    private final String name;
+    private final String email;
+    private final String phone;
+    private final String cpf;
 
     private User(UserBuilder builder) {
         this.name = builder.name;
@@ -65,7 +61,6 @@ public class User  extends PanacheEntity {
 
         public User build() {
             return new User(this);
-
         }
     }
 }
