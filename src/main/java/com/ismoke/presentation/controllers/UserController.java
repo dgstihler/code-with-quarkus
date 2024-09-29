@@ -20,7 +20,7 @@ public class UserController {
 
     @GET
     public List<User> getAllUsers() {
-        return userRepository.listAll();
+        return userRepository.getAllUsers();
     }
 
     @GET

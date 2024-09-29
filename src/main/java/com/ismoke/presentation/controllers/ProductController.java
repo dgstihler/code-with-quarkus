@@ -24,7 +24,7 @@ public class ProductController {
 
     @GET
     public List<Product> getAllProducts() {
-        return productRepository.listAll();
+        return productRepository.getAllProducts();
     }
 
     @GET
