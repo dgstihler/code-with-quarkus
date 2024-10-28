@@ -1,4 +1,4 @@
-package com.ismoke.domain.model;
+package com.ismoke.domain.entities;
 
 public class Product {
     private final String id;

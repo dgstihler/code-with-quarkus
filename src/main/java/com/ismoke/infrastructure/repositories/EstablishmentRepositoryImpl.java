@@ -1,7 +1,7 @@
-package com.ismoke.infrastructure.persistence;
+package com.ismoke.infrastructure.repositories;
 
-import com.ismoke.domain.model.Establishment;
-import com.ismoke.domain.repository.EstablishmentRepository;
+import com.ismoke.domain.entities.Establishment;
+import com.ismoke.domain.repositories.EstablishmentRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.ismoke.domain.repository;
+package com.ismoke.domain.repositories;
 
-import com.ismoke.domain.model.Product;
+import com.ismoke.domain.entities.Product;
 import java.util.List;
 import java.util.Optional;
 

@@ -11,15 +11,17 @@ repositories {
 dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-jsonb'
-    implementation 'io.quarkus:quarkus-hibernate-orm-panache'
-    implementation 'io.quarkus:quarkus-resteasy'
     implementation 'io.quarkus:quarkus-smallrye-jwt'
     implementation 'io.quarkiverse.jdbc:quarkus-jdbc-sqlite:3.0.10'
     implementation 'io.quarkus:quarkus-arc'
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3'  // Driver direto do SQLite
+    implementation 'io.quarkus:quarkus-hibernate-orm-panache'
     implementation 'io.quarkus:quarkus-hibernate-orm'
+    implementation 'io.quarkus:quarkus-resteasy-reactive'  // Fornece suporte REST básico
+    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'  // Para JSON com Jackson
     testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
 }
+
 
 group 'com.ismoke'
 version '1.0.0-SNAPSHOT'

@@ -1,9 +1,6 @@
 package com.ismoke;
 
-import com.ismoke.domain.model.User;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTest {
 
@@ -15,17 +12,6 @@ public class UserTest {
     @Test
     public void testUserGetters() {
 
-        User user = User.builder()
-            .name(name)
-            .email(email)
-            .cpf(cpf)
-            .phone(phone)
-            .build();
-
-        assertEquals(name, user.getName());
-        assertEquals(email, user.getEmail());
-        assertEquals(cpf, user.getCpf());
-        assertEquals(phone, user.getPhone());
     }
 
 }

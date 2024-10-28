@@ -1,7 +1,7 @@
-package com.ismoke.presentation.controllers;
+package com.ismoke.interfaces;
 
-import com.ismoke.domain.model.Establishment;
-import com.ismoke.infrastructure.persistence.EstablishmentRepositoryImpl;
+import com.ismoke.domain.entities.Establishment;
+import com.ismoke.infrastructure.repositories.EstablishmentRepositoryImpl;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;

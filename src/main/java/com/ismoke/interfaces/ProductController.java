@@ -1,7 +1,7 @@
-package com.ismoke.presentation.controllers;
+package com.ismoke.interfaces;
 
-import com.ismoke.domain.model.Product;
-import com.ismoke.infrastructure.persistence.ProductRepositoryImpl;
+import com.ismoke.domain.entities.Product;
+import com.ismoke.infrastructure.repositories.ProductRepositoryImpl;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
