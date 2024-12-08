@@ -6,12 +6,14 @@ import com.ismoke.infrastructure.entities.VendedorEntity;
 import com.ismoke.infrastructure.mappers.VendedorMapper;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
 public class VendedorRepositoryImpl implements VendedorRepository, PanacheRepositoryBase<VendedorEntity, String> {
 
+    @Transactional
     @Override
     public void salvar(Vendedor vendedor) {
         VendedorEntity entity = VendedorMapper.toEntity(vendedor);
@@ -24,6 +26,7 @@ public class VendedorRepositoryImpl implements VendedorRepository, PanacheReposi
             .map(VendedorMapper::toDomain);
     }
 
+    @Transactional
     @Override
     public void deletar(String id) {
         deleteById(id);

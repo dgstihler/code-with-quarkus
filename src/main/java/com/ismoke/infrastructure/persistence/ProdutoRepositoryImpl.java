@@ -7,12 +7,14 @@ import com.ismoke.infrastructure.mappers.ProdutoMapper;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
 public class ProdutoRepositoryImpl implements ProdutoRepository, PanacheRepositoryBase<ProdutoEntity, String> {
 
+    @Transactional
     @Override
     public void salvar(Produto produto) {
         ProdutoEntity entity = ProdutoMapper.toEntity(produto);
@@ -25,6 +27,7 @@ public class ProdutoRepositoryImpl implements ProdutoRepository, PanacheReposito
             .map(ProdutoMapper::toDomain);
     }
 
+    @Transactional
     @Override
     public void deletar(String id) {
         deleteById(id);

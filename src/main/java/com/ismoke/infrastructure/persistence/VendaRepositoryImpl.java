@@ -6,12 +6,14 @@ import com.ismoke.infrastructure.entities.VendaEntity;
 import com.ismoke.infrastructure.mappers.VendaMapper;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
 public class VendaRepositoryImpl implements VendaRepository, PanacheRepositoryBase<VendaEntity, String> {
 
+    @Transactional
     @Override
     public void registrarVenda(Venda venda) {
         VendaEntity entity = VendaMapper.toEntity(venda);
