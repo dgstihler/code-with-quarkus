@@ -76,3 +76,49 @@ Create your first JPA entity
 Easily start your RESTful Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+
+### Project Architecture: Clean Architecture, DDD, and SOLID Principles
+
+This project is built on Clean Architecture, combined with Domain-Driven Design (DDD) and SOLID principles, ensuring scalability, maintainability, and clear separation of concerns.
+
+Clean Architecture
+The system is organized into distinct layers:
+
+Domain: The core layer containing business logic and rules, isolated from external dependencies. Includes entities, aggregates, and domain services.
+Application: Coordinates use cases, connecting domain logic with external systems.
+Infrastructure: Manages technical details like database access and APIs, designed to be easily replaceable.
+User Interface: Handles user interactions via REST APIs or other communication channels.
+Domain-Driven Design (DDD)
+DDD ensures the domain is central, reflecting the business's complexity. Key concepts include:
+
+Entities: Core objects with unique identities (e.g., User, Order).
+Value Objects: Immutable objects representing descriptive attributes.
+Repositories: Abstract interfaces for data retrieval and storage.
+SOLID Principles
+The project adheres to SOLID principles for clean, modular, and flexible code:
+
+Single Responsibility: Each class has a clear, focused purpose.
+Open/Closed: Components are open for extension but closed for modification.
+Liskov Substitution: Subtypes can replace base types without issues.
+Interface Segregation: Interfaces are specific to client needs.
+Dependency Inversion: High-level modules depend on abstractions, not concrete implementations.
+This architecture enables adaptability to changes while maintaining a strong, well-defined core.
+
+src/main/java/br/com/ismoke/
+
+├── application/
+│   ├── builders/
+│   ├── dtos/
+│   ├── exceptions/
+│   └── services/
+├── domain/
+│   ├── models/
+│   ├── repositories/
+│   └── exceptions/
+├── infrastructure/
+│   ├── entities/
+│   ├── mappers/    
+│   └── persistence/
+├── presentation/
+│   ├── controllers/
+│   └── exceptions/

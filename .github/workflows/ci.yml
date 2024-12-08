@@ -1,4 +1,4 @@
-name: SonarQube Analysis
+name: CI
 
 on:
   push:
@@ -9,37 +9,20 @@ on:
       - main
 
 jobs:
-  sonarQube:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
-          java-version: '11'
           distribution: 'temurin'
+          java-version: '21'
 
-      - name: Cache SonarQube dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar-${{ hashFiles('**/*.properties') }}
-
-      - name: Run SonarQube Scanner
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Build and Test
         run: |
-          # Baixa o Sonar Scanner
-          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
-          unzip sonar-scanner.zip -d $HOME
-          export PATH="$HOME/sonar-scanner-4.6.2.2472-linux/bin:$PATH"
-
-          # Executa o SonarQube Scanner com as propriedades
-          sonar-scanner \
-            -Dsonar.projectKey=seu-projeto-key \
-            -Dsonar.sources=src \
-            -Dsonar.host.url=http://localhost:9000 \
-            -Dsonar.login=$SONAR_TOKEN
+          ./gradlew clean build
+          ./gradlew test

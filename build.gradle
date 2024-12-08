@@ -20,6 +20,8 @@ dependencies {
     implementation 'io.quarkus:quarkus-resteasy-reactive'  // Fornece suporte REST básico
     implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'  // Para JSON com Jackson
     testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'com.tngtech.archunit:archunit-junit5:1.1.0'
+    testImplementation 'io.rest-assured:rest-assured'
 }
 
 
