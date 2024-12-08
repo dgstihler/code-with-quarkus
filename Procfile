@@ -1,1 +1,1 @@
-web: java -Dquarkus.http.port=$PORT -jar build/libs/code-with-quarkus-1.0.0-SNAPSHOT.jar
+web: java -Dquarkus.http.port=$PORT -jar build/quarkus-app/quarkus-run.jar

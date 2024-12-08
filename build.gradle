@@ -24,7 +24,6 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured'
 }
 
-
 group 'com.ismoke'
 version '1.0.0-SNAPSHOT'
 
@@ -36,6 +35,7 @@ java {
 test {
     systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
 }
+
 compileJava {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-parameters'
@@ -43,4 +43,16 @@ compileJava {
 
 compileTestJava {
     options.encoding = 'UTF-8'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'io.quarkus.bootstrap.runner.QuarkusLauncher' // Classe principal para Quarkus
+        )
+    }
+}
+
+tasks.named('quarkusBuild') {
+    finalizedBy(tasks.named('build'))
 }
