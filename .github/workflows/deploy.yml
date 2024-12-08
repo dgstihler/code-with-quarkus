@@ -27,7 +27,12 @@ jobs:
           ./gradlew clean build
           ./gradlew test
 
-      # Fazer Deploy no Heroku
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Clona o histórico completo do repositório
+
+      # Faz deploy no heroku
       - name: Deploy to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
