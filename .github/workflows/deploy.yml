@@ -35,4 +35,4 @@ jobs:
           curl https://cli-assets.heroku.com/install.sh | sh
           heroku auth:token
           heroku git:remote -a ismoke
-          git push heroku main
+          git push https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/ismoke.git main
