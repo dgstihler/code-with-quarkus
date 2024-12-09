@@ -22,10 +22,14 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Build and Test
-        run: |
-          ./gradlew clean build
-          ./gradlew test
+      - name: Build and Run Tests
+        run: ./gradlew clean test jacocoTestReport jacocoTestCoverageVerification
+
+      - name: Upload JaCoCo Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: build/reports/jacoco/test/html
 
       - name: Checkout repository
         uses: actions/checkout@v3

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id 'jacoco'
 }
 
 repositories {
@@ -57,3 +58,30 @@ jar {
 tasks.named('quarkusBuild') {
     finalizedBy(tasks.named('build'))
 }
+
+// Configuração do Jacoco
+
+jacoco {
+    toolVersion = "0.8.10" // Versão mais recente do JaCoCo
+}
+
+jacocoTestReport {
+    dependsOn test // Gera o relatório após os testes
+    reports {
+        xml.required = true  // Necessário para integração com CI/CD
+        html.required = true // Gera relatório HTML
+    }
+}
+
+jacocoTestCoverageVerification {
+    dependsOn test
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.80 // Define cobertura mínima (80%)
+            }
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification
