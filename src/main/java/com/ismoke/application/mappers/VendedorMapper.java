@@ -8,8 +8,4 @@ public class VendedorMapper {
     public static VendedorDTO toDTO(Vendedor comprador) {
         return new VendedorDTO(comprador.getCnpj(), comprador.getNome(), comprador.getEmail());
     }
-
-    public static Vendedor toDomain(VendedorDTO dto) {
-        return new Vendedor(dto.getCnpj(), dto.getNome(), dto.getEmail());
-    }
 }

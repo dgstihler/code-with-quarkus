@@ -9,8 +9,4 @@ public class CompradorMapper {
     public static CompradorDTO toDTO(Comprador comprador) {
         return new CompradorDTO(comprador.getCpf(), comprador.getNome(), comprador.getEmail());
     }
-
-    public static Comprador toDomain(CompradorDTO dto) {
-        return new Comprador(dto.getCpf(), dto.getNome(), dto.getEmail());
-    }
 }

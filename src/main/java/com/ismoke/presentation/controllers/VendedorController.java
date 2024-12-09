@@ -78,10 +78,10 @@ public class VendedorController {
     @GET
     public Response listarVendedores() {
         try {
-            List<VendedorDTO> compradores = vendedorService.listarTodosVendedores();
+            List<VendedorDTO> vendedores = vendedorService.listarTodosVendedores();
 
-            if (compradores.isEmpty()) {
-                return Response.ok(compradores).build();
+            if (!vendedores.isEmpty()) {
+                return Response.ok(vendedores).build();
             }
         } catch (RuntimeException e) {
             return Response.status(Response.Status.BAD_REQUEST)

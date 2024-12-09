@@ -72,7 +72,7 @@ public class CompradorController {
         try {
             List<CompradorDTO> compradores = compradorService.listarTodosCompradores();
 
-            if (compradores.isEmpty()) {
+            if (!compradores.isEmpty()) {
                 return Response.ok(compradores).build();
             }
         } catch (RuntimeException e) {
