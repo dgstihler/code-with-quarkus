@@ -53,5 +53,51 @@ class VendedorTest {
         );
         assertEquals("O nome contém palavras impróprias.", exception.getMessage());
     }
+
+    @Test
+    void deveLancarExcecaoParaEmailInvalido() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Vendedor("12.345.678/0001-95", "Diogo Galdino", "emailinvalido")
+        );
+        assertEquals("O email esta inválido ou vazio.", exception.getMessage());
+    }
+
+    @Test
+    void deveLancarExcecaoParaEmailVazio() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Vendedor("12.345.678/0001-95", "Diogo", "    ")
+        );
+        assertEquals("O email esta inválido ou vazio.", exception.getMessage());
+    }
+
+    @Test
+    void deveLancarExcecaoParaEmailNulo() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Vendedor("12.345.678/0001-95", "Diogo Galdino", null)
+        );
+        assertEquals("O email esta inválido ou vazio.", exception.getMessage());
+    }
+
+
+    @Test
+    void deveLancarExcecaoParaCNPJVazio() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Vendedor("    ", "Diogo", "diogo.galdino@gmail.com")
+        );
+        assertEquals("O CNPJ esta inválido ou vazio.", exception.getMessage());
+    }
+
+    @Test
+    void deveLancarExcecaoParaCNPJNulo() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Vendedor(null, "Diogo Galdino", "diogo.galdino@gmail.com")
+        );
+        assertEquals("O CNPJ esta inválido ou vazio.", exception.getMessage());
+    }
 }
 

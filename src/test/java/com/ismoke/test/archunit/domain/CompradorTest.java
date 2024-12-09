@@ -19,15 +19,6 @@ class CompradorTest {
     }
 
     @Test
-    void deveLancarExcecaoParaCPFInvalidoOuVazio() {
-        IllegalArgumentException exception = assertThrows(
-            IllegalArgumentException.class,
-            () -> new Comprador("12345", "Diogo Galdino", "diogo.galdino@gmail.com")
-        );
-        assertEquals("O CPF esta inválido ou vazio.", exception.getMessage());
-    }
-
-    @Test
     void deveLancarExcecaoParaNomeNulo() {
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
@@ -46,6 +37,16 @@ class CompradorTest {
     }
 
     @Test
+    void deveLancarExcecaoParaCPFInvalidoOuVazio() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Comprador("12345", "Diogo Galdino", "diogo.galdino@gmail.com")
+        );
+        assertEquals("O CPF esta inválido ou vazio.", exception.getMessage());
+    }
+
+
+    @Test
     void deveLancarExcecaoParaNomeImproprio() {
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
@@ -61,6 +62,43 @@ class CompradorTest {
             () -> new Comprador("123.456.789-09", "Diogo Galdino", "emailinvalido")
         );
         assertEquals("O email esta inválido ou vazio.", exception.getMessage());
+    }
+
+    @Test
+    void deveLancarExcecaoParaEmailVazio() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Comprador("05555982925", "Diogo", "    ")
+        );
+        assertEquals("O email esta inválido ou vazio.", exception.getMessage());
+    }
+
+    @Test
+    void deveLancarExcecaoParaEmailNulo() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Comprador("05555982925", "Diogo Galdino", null)
+        );
+        assertEquals("O email esta inválido ou vazio.", exception.getMessage());
+    }
+
+
+    @Test
+    void deveLancarExcecaoParaCpfVazio() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Comprador("    ", "Diogo", "diogo.galdino@gmail.com")
+        );
+        assertEquals("O CPF esta inválido ou vazio.", exception.getMessage());
+    }
+
+    @Test
+    void deveLancarExcecaoParaCPFNulo() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Comprador(null, "Diogo Galdino", "diogo.galdino@gmail.com")
+        );
+        assertEquals("O CPF esta inválido ou vazio.", exception.getMessage());
     }
 }
 

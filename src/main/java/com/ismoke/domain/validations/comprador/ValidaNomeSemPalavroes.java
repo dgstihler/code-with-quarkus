@@ -8,8 +8,7 @@ public class ValidaNomeSemPalavroes implements Validacao<Comprador> {
 
     @Override
     public void validar(Comprador comprador) {
-        if (!comprador.getNome().trim().isEmpty()
-            && !ValidadorPessoa.validarNomeSemPalavroes(comprador.getNome())) {
+        if (!ValidadorPessoa.validarNomeSemPalavroes(comprador.getNome())) {
             throw new IllegalArgumentException("O nome contém palavras impróprias.");
         }
     }

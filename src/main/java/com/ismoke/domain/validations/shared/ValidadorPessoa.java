@@ -1,8 +1,6 @@
 package com.ismoke.domain.validations.shared;
 
 public class ValidadorPessoa {
-    private ValidadorPessoa() {
-    }
 
     public static boolean emailValido(String email) {
         String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
