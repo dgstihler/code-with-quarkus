@@ -28,16 +28,35 @@ public class CompradorController {
     public Response criarComprador(@QueryParam("cpf") String cpf,
                                    @QueryParam("nome") String nome,
                                    @QueryParam("email") String email) {
-        compradorService.criarComprador(cpf, nome, email);
-        return Response.status(Response.Status.CREATED).build();
+        try {
+
+            CompradorDTO compradorCriado = compradorService.criarComprador(cpf, nome, email);
+
+            return Response.status(Response.Status.CREATED)
+                .entity(compradorCriado)
+                .build();
+        } catch (RuntimeException e) {
+
+            return Response.status(Response.Status.BAD_REQUEST)
+                .entity(e.getMessage())
+                .build();
+        }
     }
 
     @DELETE
     @Path("/{cpf}")
     public Response deletarComprador(@PathParam("cpf") String cpf) {
-        System.out.println("Tentando deletar o comprador");
-        compradorService.deletarComprador(cpf);
-        return Response.noContent().build();
+        try {
+            compradorService.deletarComprador(cpf);
+
+            return Response.status(Response.Status.NO_CONTENT)
+                .entity("Comprador deletado com sucesso")
+                .build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                .entity(e.getMessage())
+                .build();
+        }
     }
 
     @GET
@@ -50,12 +69,19 @@ public class CompradorController {
 
     @GET
     public Response listarCompradores() {
-        List<CompradorDTO> compradores = compradorService.listarTodosCompradores();
+        try {
+            List<CompradorDTO> compradores = compradorService.listarTodosCompradores();
 
-        if (compradores.isEmpty()) {
-            return Response.ok(compradores).build();
+            if (compradores.isEmpty()) {
+                return Response.ok(compradores).build();
+            }
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                .build();
         }
 
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("Nenhum comprador a ser listado")
+            .build();
     }
 }

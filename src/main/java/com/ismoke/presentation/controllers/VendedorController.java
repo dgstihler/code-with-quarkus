@@ -23,16 +23,38 @@ public class VendedorController {
     private VendedorService vendedorService;
 
     @POST
-    public void criarVendedor(@QueryParam("cnpj") String cnpj,
-                              @QueryParam("nome") String nome,
-                              @QueryParam("email") String email) {
-        vendedorService.criarVendedor(cnpj, nome, email);
+    public Response criarVendedor(@QueryParam("cnpj") String cnpj,
+                                  @QueryParam("nome") String nome,
+                                  @QueryParam("email") String email) {
+        try {
+
+            VendedorDTO vendedorCriado = vendedorService.criarVendedor(cnpj, nome, email);
+
+            return Response.status(Response.Status.CREATED)
+                .entity(vendedorCriado)
+                .build();
+        } catch (RuntimeException e) {
+
+            return Response.status(Response.Status.BAD_REQUEST)
+                .entity(e.getMessage())
+                .build();
+        }
     }
 
     @DELETE
     @Path("/{cnpj}")
-    public void deletarVendedor(String cnpj) {
-        vendedorService.deletarVendedor(cnpj);
+    public Response deletarVendedor(String cnpj) {
+        try {
+            vendedorService.deletarVendedor(cnpj);
+
+            return Response.status(Response.Status.NO_CONTENT)
+                .entity("Vendedor deletado com sucesso")
+                .build();
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                .entity(e.getMessage())
+                .build();
+        }
     }
 
     @GET
@@ -55,12 +77,19 @@ public class VendedorController {
 
     @GET
     public Response listarVendedores() {
-        List<VendedorDTO> vendedores = vendedorService.listarTodosVendedores();
+        try {
+            List<VendedorDTO> compradores = vendedorService.listarTodosVendedores();
 
-        if (vendedores.isEmpty()) {
-            return Response.ok(vendedores).build();
+            if (compradores.isEmpty()) {
+                return Response.ok(compradores).build();
+            }
+        } catch (RuntimeException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                .build();
         }
 
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.status(Response.Status.NOT_FOUND)
+            .entity("Nenhum vendedor a ser listado")
+            .build();
     }
 }
