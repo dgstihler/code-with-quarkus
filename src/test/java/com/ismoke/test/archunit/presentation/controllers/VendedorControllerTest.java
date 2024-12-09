@@ -2,12 +2,19 @@ package com.ismoke.test.archunit.presentation.controllers;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.Mockito.when;
 
+import com.ismoke.application.services.VendedorService;
+import com.ismoke.domain.repositories.VendedorRepository;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 @QuarkusTest
 public class VendedorControllerTest {
+
+    private final VendedorRepository vendedorRepository = Mockito.mock(VendedorRepository.class);
+    private final VendedorService vendedorService = new VendedorService(vendedorRepository);
 
     @Test
     void shouldCreateVendedorAndFindByCNPJ() {
@@ -40,6 +47,18 @@ public class VendedorControllerTest {
             .delete("/vendedores/12345678000199")
             .then()
             .statusCode(204);
+    }
+
+    @Test
+    void shouldListAllEmptySellers() {
+
+        // Act & Assert: Listar todos os vendedores
+        given()
+            .contentType("application/json")
+            .when()
+            .get("/vendedores")
+            .then()
+            .statusCode(404);
     }
 
     @Test

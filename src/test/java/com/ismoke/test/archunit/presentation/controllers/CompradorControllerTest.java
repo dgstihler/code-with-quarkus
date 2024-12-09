@@ -44,6 +44,18 @@ class CompradorControllerTest {
     }
 
     @Test
+    void shouldListAllEmptyCompradores() {
+
+        // Act & Assert: Listar todos os compradores
+        given()
+            .contentType("application/json")
+            .when()
+            .get("/compradores")
+            .then()
+            .statusCode(404);
+    }
+
+    @Test
     void shouldListAllCompradoresFromDatabase() {
         // Arrange: Criar dois compradores
         given()
