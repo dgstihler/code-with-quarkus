@@ -27,9 +27,8 @@ jobs:
           ./gradlew clean test jacocoTestReport || echo "Tests or coverage failed, but report will be saved."
 
       - name: Show Coverage Path
-        run:  
-          echo 
-            "Coverage report generated at: build/reports/jacoco/test/html/index.html"
+        run:
+         echo "build/reports/jacoco/test/html/index.html"
 
       - name: Upload JaCoCo Coverage Report
         uses: actions/upload-artifact@v3
