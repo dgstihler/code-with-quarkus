@@ -35,6 +35,7 @@ public class ArchitectureTest {
             .resideInAnyPackage(
                 "java..",
                 "..test..",
+                "jakarta..",
                 "com.ismoke.application..",
                 "com.ismoke.domain.." // Permite dependências no domínio
             )

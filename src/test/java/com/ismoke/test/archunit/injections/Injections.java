@@ -2,8 +2,8 @@ package com.ismoke.test.archunit.injections;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.ismoke.application.services.CompradorService;
-import com.ismoke.application.services.VendedorService;
+import com.ismoke.application.services.CustomerService;
+import com.ismoke.application.services.SellerService;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
@@ -12,19 +12,19 @@ import org.junit.jupiter.api.Test;
 public class Injections {
 
     @Inject
-    CompradorService compradorService;
+    CustomerService customerService;
 
     @Inject
-    VendedorService vendedorService;
+    SellerService sellerService;
 
     @Test
     public void deveInjetarCompradorService() {
-        assertNotNull(compradorService, "CompradorService não foi injetado!");
+        assertNotNull(customerService, "CustomerService não foi injetado!");
     }
 
     @Test
     public void deveInjetarVendedorService() {
-        assertNotNull(vendedorService, "VendedorService não foi injetado!");
+        assertNotNull(sellerService, "SellerService não foi injetado!");
     }
 
 }

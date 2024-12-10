@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Validador<T> {
 
-    private final List<Validacao<T>> validacoes;
+    private final List<Validator<T>> validacoes;
 
-    public Validador(List<Validacao<T>> validacoes) {
+    public Validador(List<Validator<T>> validacoes) {
         this.validacoes = validacoes;
     }
 
     public void validar(T entidade) {
-        for (Validacao<T> validacao : validacoes) {
-            validacao.validar(entidade);
+        for (Validator<T> validator : validacoes) {
+            validator.validar(entidade);
         }
     }
 }
