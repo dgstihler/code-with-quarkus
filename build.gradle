@@ -73,12 +73,13 @@ jacocoTestReport {
     }
 }
 
+
 jacocoTestCoverageVerification {
     dependsOn test
     violationRules {
         rule {
             limit {
-                minimum = 0.80 // Define cobertura mínima (80%)
+                minimum = minimumCoverage.toBigDecimal() // Define cobertura mínima (80%)
             }
         }
     }
